@@ -1,0 +1,33 @@
+namespace org.example.basic
+
+enum BorrowStatus {
+ o BORROWING
+ o DONE
+}
+
+asset Product identified by productID {
+  o String productID
+  o String productName
+  o Integer productSum
+}
+
+asset Borrow identified by borrowID {
+  o String borrowID
+  --> Product product
+  o Integer borrowSum
+  o String borrowUntil
+  o BorrowStatus borrowStatus
+  o String name
+  o String cp
+}
+
+transaction doneBorrow {
+  --> Borrow borrow
+  o BorrowStatus status
+}
+
+transaction updateProduct {
+  --> Product product
+  o String name
+  o Integer sum
+}
